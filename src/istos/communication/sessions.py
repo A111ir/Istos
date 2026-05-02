@@ -43,11 +43,9 @@ class IstosZenohConfig(BaseSettings):
     connect_endpoints: list[str] = Field(default_factory=list, description="Comma-separated via env or list in code")
     listen_endpoints: list[str] = Field(default_factory=list, description="Comma-separated via env or list in code")
     
-    # Basic Authorization
     username: Optional[str] = None
     password: Optional[str] = None
 
-    # TLS Configuration (Paths or Raw PEM Strings)
     root_ca_certificate: Optional[str] = Field(default=None, description="Path to CA file OR raw PEM string")
     listen_certificate: Optional[str] = Field(default=None, description="Path to cert file OR raw PEM string")
     listen_private_key: Optional[str] = Field(default=None, description="Path to key file OR raw PEM string")

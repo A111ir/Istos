@@ -89,4 +89,4 @@ async def test_query_once_formats_selector(istos, mocker):
     mock_session.get.assert_called_once()
     args, kwargs = mock_session.get.call_args
     # Verify the selector string was properly urlencoded
-    assert args[0] == "greeter?limit=10&sort=desc"
+    assert args[0] == "greeter?limit=10;sort=desc"

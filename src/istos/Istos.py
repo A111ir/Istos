@@ -14,6 +14,7 @@ from istos.core.subscribe import subscribe_wrapper
 from istos.core.publish import publish_wrapper
 from istos.core.liveliness import liveliness_wrapper
 from istos.core.retry import RetryPolicy
+from istos.routing import IstosRouter
 
 class Istos:
     """
@@ -223,6 +224,17 @@ class Istos:
         if session is None:
             raise RuntimeError("No active Zenoh session.")
         await asyncio.to_thread(session.delete, prefix)
+
+    # ------------------------------------------------------------------
+    # Routing
+    # ------------------------------------------------------------------
+
+    def include_router(self, router: IstosRouter) -> None:
+        """
+        Includes a router's routes into the main application.
+        """
+        for action in router._actions:
+            action(self)
 
     # ------------------------------------------------------------------
     # Lifecycle
