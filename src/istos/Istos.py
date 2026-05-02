@@ -79,9 +79,6 @@ class Istos:
             wrapper = agent_wrapper(func, prefix, self._storage, self._serializer)
             self._agents.append(wrapper)
             
-            # Since Istos previously bound the agent's logic to storage automatically 
-            # somewhere else or it didn't at all (it seems PrefixRegistery just looks up storage),
-            # let's look at how PrefixRegistery gets registered.
             return wrapper
         return decorator
 
